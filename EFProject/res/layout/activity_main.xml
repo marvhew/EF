@@ -8,9 +8,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.efproject.MainActivity" >
 
-    <TextView
+    <Button
+        android:id="@+id/Btn_TakePhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Zrób zdjęcie" />
+
+    <Button
+        android:id="@+id/Btn_EditPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Btn_TakePhoto"
+        android:layout_alignRight="@+id/Btn_TakePhoto"
+        android:layout_below="@+id/Btn_TakePhoto"
+        android:text="Edytuj" />
+
+    <Button
+        android:id="@+id/Btn_SavePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Btn_EditPhoto"
+        android:layout_alignRight="@+id/Btn_EditPhoto"
+        android:layout_below="@+id/Btn_EditPhoto"
+        android:text="Zapisz" />
 
 </RelativeLayout>
