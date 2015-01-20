@@ -3,6 +3,7 @@ package com.example.efproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
@@ -49,7 +50,10 @@ public class MainActivity extends Activity {
 	}
 	public void ClickEditPhotoButton(View v)
 	{
-		
+		ImageView imageView = (ImageView) findViewById(R.id.imageView1);
+		Intent intent = new Intent(this,EditPhoto.class);
+		intent.putExtra("Photo", ((BitmapDrawable) imageView.getDrawable()).getBitmap());
+		startActivityForResult(intent, REQUEST_IMAGE_EDIT);
 	}
 	public void ClickSavePhotoButton(View v)
 	{

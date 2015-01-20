@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;DrowingView.java&apos; to &apos;EFProject/src/com.example.efproject&apos;&#x0D;&#x0A;- Original project: &apos;czysta17&apos;&#x0D;&#x0A;- Destination element: &apos;EFProject/src/com.example.efproject&apos;&#x0D;&#x0A;- Original element: &apos;com.example.czysta17.DrowingView.java&apos;" description="Copy compilation unit" destination="=EFProject/src&lt;com.example.efproject" element1="/src&lt;com.example.czysta17{DrowingView.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1421739219800" units="1" version="1.0"/>
+</session>
