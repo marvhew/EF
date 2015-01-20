@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.efproject.MainActivity" >
+
+    <Button
+        android:id="@+id/Btn_TakePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Zrób zdjęcie" />
+
+    <Button
+        android:id="@+id/Btn_EditPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Btn_TakePhoto"
+        android:layout_alignRight="@+id/Btn_TakePhoto"
+        android:layout_below="@+id/Btn_TakePhoto"
+        android:text="Edytuj" />
+
+    <Button
+        android:id="@+id/Btn_SavePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Btn_EditPhoto"
+        android:layout_alignRight="@+id/Btn_EditPhoto"
+        android:layout_below="@+id/Btn_EditPhoto"
+        android:text="Zapisz" />
+
+</RelativeLayout>

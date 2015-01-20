@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Zrób zdjęcie" />
+        android:text="Zrób zdjęcie" 
+        android:onClick="ClickTakePhotoButton"/>
+    	
 
     <Button
         android:id="@+id/Btn_EditPhoto"
@@ -23,7 +25,8 @@
         android:layout_alignLeft="@+id/Btn_TakePhoto"
         android:layout_alignRight="@+id/Btn_TakePhoto"
         android:layout_below="@+id/Btn_TakePhoto"
-        android:text="Edytuj" />
+        android:text="Edytuj" 
+        android:onClick="ClickEditPhotoButton"/>
 
     <Button
         android:id="@+id/Btn_SavePhoto"
@@ -32,6 +35,7 @@
         android:layout_alignLeft="@+id/Btn_EditPhoto"
         android:layout_alignRight="@+id/Btn_EditPhoto"
         android:layout_below="@+id/Btn_EditPhoto"
-        android:text="Zapisz" />
+        android:text="Zapisz" 
+        android:onClick="ClickSavePhotoButton"/>
 
 </RelativeLayout>
