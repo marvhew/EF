@@ -69,6 +69,8 @@ public class MainActivity extends Activity {
 			Bundle extras = data.getExtras();
 			Bitmap imageBitmap = (Bitmap) extras.get("data");
 			ImageView imageView = (ImageView) findViewById(R.id.imageView1);
+			imageView.getLayoutParams().width = imageBitmap.getWidth();
+			imageView.getLayoutParams().height = imageBitmap.getHeight();
 			imageView.setImageBitmap(imageBitmap);
 		}
 	}

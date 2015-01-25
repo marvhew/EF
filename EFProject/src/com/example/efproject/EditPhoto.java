@@ -6,6 +6,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 public class EditPhoto extends Activity {
 
@@ -14,8 +17,13 @@ public class EditPhoto extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_photo);
 		Bitmap bitmap = (Bitmap)getIntent().getExtras().get("Photo");
+		int height = bitmap.getHeight();
+		int width = bitmap.getWidth();
 		DrawingView drawingView = (DrawingView) findViewById(R.id.Drawing1);
+		drawingView.getLayoutParams().width = width;
+		drawingView.getLayoutParams().height = height; 
 		drawingView.setImageBitmap(bitmap);
+		Spinner spinner = (Spinner)findViewById(R.id.Spn_Colors);
 	}
 
 	@Override
@@ -35,5 +43,26 @@ public class EditPhoto extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void Click_Cancel(View v)
+	{
+		setResult(RESULT_CANCELED);
+		finish();
+	}
+	public void Click_OK(View v)
+	{
+		setResult(RESULT_OK);
+		finish();
+	}
+	public void Click_Apply(View v)
+	{
+		float stroke = 0;
+		EditText edit = (EditText)findViewById(R.id.Edt_Stroke);
+		if(!edit.getText().toString().isEmpty())
+			stroke = Float.parseFloat(edit.getText().toString());
+		
+		DrawingView drawingView = (DrawingView) findViewById(R.id.Drawing1);
+		drawingView.SetStrokeWidth(stroke);
 	}
 }

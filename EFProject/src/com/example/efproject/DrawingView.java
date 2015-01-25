@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SlidingDrawer.OnDrawerCloseListener;
 
 public class DrawingView extends ImageView {
 	private Paint paint = new Paint();
@@ -24,9 +25,20 @@ public class DrawingView extends ImageView {
 		paint.setStrokeJoin(Paint.Join.ROUND);
 	}
 	
+	public void SetPaintColor(int color)
+	{
+		paint.setColor(color);
+	}
+	
+	public void SetStrokeWidth(float width)
+	{
+		paint.setStrokeWidth(width);
+	}
+	
 	@Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
+		super.onDraw(canvas);
 		canvas.drawPath(path, paint);
 	}
 

@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.efproject.EditPhoto" >
+
+    <com.example.efproject.DrawingView
+        android:id="@+id/Drawing1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Spn_Colors"
+        android:layout_alignLeft="@+id/Edit_Stroke"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/Spn_Colors" />
+
+    <Button
+        android:id="@+id/Btn_Cancel"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/Btn_Apply"
+        android:text="Cancel" 
+        android:onClick="Click_Cancel"/>
+
+    <Button
+        android:id="@+id/Btn_OK"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Btn_Cancel"
+        android:layout_alignBottom="@+id/Btn_Cancel"
+        android:layout_toRightOf="@+id/Btn_Apply"
+        android:text="OK" 
+        android:onClick="Click_OK"/>
+
+    <EditText
+        android:id="@+id/Edit_Stroke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Spn_Colors"
+        android:layout_alignLeft="@+id/Btn_Cancel"
+        android:layout_alignTop="@+id/Spn_Colors"
+        android:layout_toLeftOf="@+id/Btn_Apply"
+        android:ems="10"
+        android:inputType="number" />
+
+    <Spinner
+        android:id="@+id/Spn_Colors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Btn_OK"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/Btn_Apply" />
+
+    <Button
+        android:id="@+id/Btn_Apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Edit_Stroke"
+        android:layout_centerHorizontal="true"
+        android:text="Apply Conf"
+        android:onClick="Click_Apply" />
+
+</RelativeLayout>
