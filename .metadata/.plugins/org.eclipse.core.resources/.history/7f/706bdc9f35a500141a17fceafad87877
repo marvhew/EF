@@ -3,12 +3,9 @@ package com.example.efproject;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,45 +42,9 @@ public class EditPhoto extends Activity {
 
 	private void SaveChanges() {
 		DrawingView drawingView = (DrawingView) findViewById(R.id.Drawing1);
-		Bitmap bmp1 = ((BitmapDrawable)drawingView.getDrawable()).getBitmap().copy(Bitmap.Config.ARGB_8888, true);
-		Bitmap bmp2 = drawingView.getDrawingCache().copy(Bitmap.Config.ARGB_8888, false);
-		
-		drawingView.setImageBitmap(combineImages(bmp1,bmp2));
+		Bitmap tmp = drawingView.getDrawingCache();
+		drawingView.setImageBitmap(tmp);
 	}
-	
-	public Bitmap combineImages(Bitmap c, Bitmap s) { // can add a 3rd parameter 'String loc' if you want to save the new image - left some code to do that at the bottom 
-	    Bitmap cs = null; 
-	 
-	    int width, height = 0; 
-	     
-	    if(c.getWidth() > s.getWidth()) { 
-	      width = c.getWidth(); 
-	      height = c.getHeight(); 
-	    } else { 
-	      width = s.getWidth(); 
-	      height = c.getHeight(); 
-	    } 
-	 
-	    cs = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888); 
-	 
-	    Canvas comboImage = new Canvas(cs); 
-	 
-	    comboImage.drawBitmap(c, 0f, 0f, null); 
-	    comboImage.drawBitmap(s, 0f, 0f, null); 
-	 
-	    // this is an extra bit I added, just incase you want to save the new image somewhere and then return the location 
-	    /*String tmpImg = String.valueOf(System.currentTimeMillis()) + ".png"; 
-	 
-	    OutputStream os = null; 
-	    try { 
-	      os = new FileOutputStream(loc + tmpImg); 
-	      cs.compress(CompressFormat.PNG, 100, os); 
-	    } catch(IOException e) { 
-	      Log.e("combineImages", "problem combining images", e); 
-	    }*/ 
-	 
-	    return cs; 
-	  } 
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

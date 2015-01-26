@@ -45,11 +45,19 @@ public class EditPhoto extends Activity {
 
 	private void SaveChanges() {
 		DrawingView drawingView = (DrawingView) findViewById(R.id.Drawing1);
-		Bitmap bmp1 = ((BitmapDrawable)drawingView.getDrawable()).getBitmap().copy(Bitmap.Config.ARGB_8888, true);
-		Bitmap bmp2 = drawingView.getDrawingCache().copy(Bitmap.Config.ARGB_8888, false);
+		Bitmap bmp1 = ((BitmapDrawable)drawingView.getDrawable()).getBitmap();
+		Bitmap bmp2 = drawingView.getDrawingCache();
 		
 		drawingView.setImageBitmap(combineImages(bmp1,bmp2));
 	}
+	
+	public static Bitmap overlay(Bitmap bmp1, Bitmap bmp2) {
+        Bitmap bmOverlay = Bitmap.createBitmap(bmp1.getWidth(), bmp1.getHeight(), bmp1.getConfig());
+        Canvas canvas = new Canvas(bmOverlay);
+        canvas.drawBitmap(bmp1, 0, 0, null);
+        canvas.drawBitmap(bmp2, 0, 0, null);
+        return bmOverlay;
+    }
 	
 	public Bitmap combineImages(Bitmap c, Bitmap s) { // can add a 3rd parameter 'String loc' if you want to save the new image - left some code to do that at the bottom 
 	    Bitmap cs = null; 

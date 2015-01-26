@@ -46,7 +46,7 @@ public class EditPhoto extends Activity {
 	private void SaveChanges() {
 		DrawingView drawingView = (DrawingView) findViewById(R.id.Drawing1);
 		Bitmap bmp1 = ((BitmapDrawable)drawingView.getDrawable()).getBitmap().copy(Bitmap.Config.ARGB_8888, true);
-		Bitmap bmp2 = drawingView.getDrawingCache().copy(Bitmap.Config.ARGB_8888, false);
+		Bitmap bmp2 = drawingView.getDrawingCache().copy(Bitmap.Config.ARGB_8888, true);
 		
 		drawingView.setImageBitmap(combineImages(bmp1,bmp2));
 	}
