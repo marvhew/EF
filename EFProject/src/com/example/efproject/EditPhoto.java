@@ -1,12 +1,15 @@
 package com.example.efproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,14 +19,18 @@ public class EditPhoto extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_photo);
-		Bitmap bitmap = (Bitmap)getIntent().getExtras().get("Photo");
+		Bitmap bitmap = (Bitmap) getIntent().getExtras().get("Photo");
 		int height = bitmap.getHeight();
 		int width = bitmap.getWidth();
 		DrawingView drawingView = (DrawingView) findViewById(R.id.Drawing1);
 		drawingView.getLayoutParams().width = width;
-		drawingView.getLayoutParams().height = height; 
+		drawingView.getLayoutParams().height = height;
 		drawingView.setImageBitmap(bitmap);
-		Spinner spinner = (Spinner)findViewById(R.id.Spn_Colors);
+		String[] arraySpinner = new String[] { "Red", "Blue", "Green" };
+		Spinner spinner = (Spinner) findViewById(R.id.Spn_Colors);
+		ArrayAdapter adapter = new ArrayAdapter(this,
+				android.R.layout.simple_spinner_item, arraySpinner);
+		spinner.setAdapter(adapter);
 	}
 
 	@Override
@@ -31,6 +38,12 @@ public class EditPhoto extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.edit_photo, menu);
 		return true;
+	}
+
+	private void SaveChanges() {
+		DrawingView drawingView = (DrawingView) findViewById(R.id.Drawing1);
+		Bitmap tmp = ((BitmapDrawable) drawingView.getDrawable()).getBitmap();
+		drawingView.setImageBitmap(tmp);
 	}
 
 	@Override
@@ -44,25 +57,39 @@ public class EditPhoto extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	public void Click_Cancel(View v)
-	{
+
+	public void Click_Cancel(View v) {
 		setResult(RESULT_CANCELED);
 		finish();
 	}
-	public void Click_OK(View v)
-	{
-		setResult(RESULT_OK);
+
+	public void Click_OK(View v) {
+		Intent intent = new Intent();
+		intent.putExtra("drawing",
+				((BitmapDrawable) ((DrawingView) findViewById(R.id.Drawing1))
+						.getDrawable()).getBitmap());
+		setResult(RESULT_OK, intent);
 		finish();
 	}
-	public void Click_Apply(View v)
-	{
+
+	public void Click_Apply(View v) {
+		SaveChanges();
 		float stroke = 0;
-		EditText edit = (EditText)findViewById(R.id.Edt_Stroke);
-		if(!edit.getText().toString().isEmpty())
+		EditText edit = (EditText) findViewById(R.id.Edt_Stroke);
+		if (!edit.getText().toString().isEmpty())
 			stroke = Float.parseFloat(edit.getText().toString());
-		
+
 		DrawingView drawingView = (DrawingView) findViewById(R.id.Drawing1);
+		Spinner spinner = (Spinner) findViewById(R.id.Spn_Colors);
+		String color = (String) spinner.getSelectedItem();
+		if (color == "Red") {
+			drawingView.SetPaintColor(Color.RED);
+		} else if (color == "Blue") {
+			drawingView.SetPaintColor(Color.BLUE);
+		} else if (color == "Green") {
+			drawingView.SetPaintColor(Color.GREEN);
+		}
+
 		drawingView.SetStrokeWidth(stroke);
 	}
 }

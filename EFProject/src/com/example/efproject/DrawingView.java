@@ -40,6 +40,7 @@ public class DrawingView extends ImageView {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
 		canvas.drawPath(path, paint);
+		canvas.save();
 	}
 
 	@Override
