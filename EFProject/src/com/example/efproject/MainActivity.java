@@ -28,6 +28,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		findViewById(R.id.Btn_EditPhoto).setEnabled(false);
+		findViewById(R.id.Btn_SavePhoto).setEnabled(false);
 	}
 
 	@Override
@@ -130,6 +132,8 @@ public class MainActivity extends Activity {
 			imageView.getLayoutParams().width = imageBitmap.getWidth();
 			imageView.getLayoutParams().height = imageBitmap.getHeight();
 			imageView.setImageBitmap(imageBitmap);
+			findViewById(R.id.Btn_EditPhoto).setEnabled(true);
+			findViewById(R.id.Btn_SavePhoto).setEnabled(true);
 		} else if (requestCode == REQUEST_IMAGE_EDIT && resultCode == RESULT_OK) {
 			Bundle extras = data.getExtras();
 			Bitmap imageBitmap = (Bitmap) extras.get("drawing");
